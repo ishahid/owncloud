@@ -13,7 +13,10 @@ RUN apt-get clean && \
     apt-get update && \
     apt-get --yes install owncloud
 
-COPY owncloud.conf /etc/apache2/conf-available/owncloud.conf
+COPY apache2.conf /etc/apache2/conf-available/owncloud.conf
+
+COPY perms.sh /perms.sh
+RUN chmod +x /perms.sh && /perms.sh && rm -rf /perms.sh
 
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
