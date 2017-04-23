@@ -14,7 +14,7 @@ RUN apt-get clean && \
     apt-get --yes install owncloud
 
 COPY files/apache2.conf /etc/apache2/conf-available/owncloud.conf
-# COPY files/htaccess.config.php /var/www/owncloud/config/htaccess.config.php
+COPY files/.htaccess /var/www/owncloud/.htaccess
 
 COPY files/perms.sh /perms.sh
 RUN chmod +x /perms.sh && /perms.sh && rm -rf /perms.sh
